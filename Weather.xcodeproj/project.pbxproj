@@ -16,6 +16,7 @@
 		182A6E8521669BE3006BFCBF /* WeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182A6E8421669BE3006BFCBF /* WeatherTests.swift */; };
 		182A6E9021669BE3006BFCBF /* WeatherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182A6E8F21669BE3006BFCBF /* WeatherUITests.swift */; };
 		182A6E9E21669CEC006BFCBF /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182A6E9D21669CEC006BFCBF /* ThirdViewController.swift */; };
+		182AFB28216B8C02009582E4 /* Forecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182AFB27216B8C02009582E4 /* Forecast.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		182A6E8F21669BE3006BFCBF /* WeatherUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherUITests.swift; sourceTree = "<group>"; };
 		182A6E9121669BE3006BFCBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		182A6E9D21669CEC006BFCBF /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
+		182AFB27216B8C02009582E4 /* Forecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forecast.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				182A6E7821669BE3006BFCBF /* LaunchScreen.storyboard */,
 				182A6E7B21669BE3006BFCBF /* Info.plist */,
 				182A6E9D21669CEC006BFCBF /* ThirdViewController.swift */,
+				182AFB27216B8C02009582E4 /* Forecast.swift */,
 			);
 			path = Weather;
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 				182A6E6E21669BE3006BFCBF /* AppDelegate.swift in Sources */,
 				182A6E9E21669CEC006BFCBF /* ThirdViewController.swift in Sources */,
 				182A6E7021669BE3006BFCBF /* FirstViewController.swift in Sources */,
+				182AFB28216B8C02009582E4 /* Forecast.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

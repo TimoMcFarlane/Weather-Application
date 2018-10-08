@@ -14,10 +14,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     var activityIndicatorView: UIActivityIndicatorView!
     
-    let dispatchQueue = DispatchQueue(label: "Dispatch Queue", attributes: [], target: nil)
-    
-    let cellIdentifier = "cell"
-    
+        
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -26,11 +23,16 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
             
             activityIndicatorView.startAnimating()
             
-            dispatchQueue.async {
+            DispatchQueue.main.async {
                 self.fetchUrl(url: "https://swapi.co/api/people/1");
             }
         }
     }
+    
+    // https://api.openweathermap.org//data/2.5/find?q=London&units=metric&APPID=
+    
+    // find?q=London (for searching by city name)
+    // &units=metric to get celcius
     
     // var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
     
@@ -67,9 +69,11 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         let task = session.dataTask(with: url!, completionHandler: doneFetching);
         
-        // Starts the task, spawns a new thread and calls the callback function
         task.resume();
     }
+    // Starts the task, spawns a new thread and calls the callback function
+    // Instead of doneFetching -> make new method for getting Icon
+    // Use doneFetching after icon has been retrieved
     
     func doneFetching(data: Data?, response: URLResponse?, error: Error?) {
         let resstr = String(data: data!, encoding: String.Encoding.utf8)
