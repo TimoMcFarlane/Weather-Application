@@ -32,6 +32,8 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
     }
     
+    // var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
+    
     /*OperationQueue.main.addOperation() {
      self.activityIndicatorView.stopAnimating()
      self.tableView.separatorStyle = .singleLine
@@ -39,6 +41,22 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
      
      self.tableView.reloadData()
      }*/
+    
+    
+    // Initiate loading animation
+    
+    // 1. Fetch data
+    
+    // 2. Parse json
+    
+    // 3. Get image code
+    
+    // 4. Get image
+    
+    // 5. Construct list item
+    
+    // Signal ready -> End animation
+    
     
     func fetchUrl(url : String) {
         let config = URLSessionConfiguration.default
