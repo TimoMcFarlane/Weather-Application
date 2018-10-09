@@ -8,9 +8,9 @@
 
 import UIKit
 
-class FirstViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class FirstViewController: UITableViewController {
     
-    var data: [String] = []
+    var forecast: ForecastResponse?
     
     var activityIndicatorView: UIActivityIndicatorView!
     
@@ -18,18 +18,16 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if (data.count == 0) {
-            tableView.separatorStyle = .none
-            
-            activityIndicatorView.startAnimating()
-            
-            DispatchQueue.main.async {
-                self.fetchUrl(url: "https://swapi.co/api/people/1");
-            }
+        self.tableView.separatorStyle = .none
+        
+        activityIndicatorView.startAnimating()
+        
+        DispatchQueue.main.async {
+            self.fetchUrl(url: "https://api.openweathermap.org//data/2.5/find?q=Tampere&units=metric&APPID=");
         }
     }
     
-    // https://api.openweathermap.org//data/2.5/find?q=London&units=metric&APPID=
+    //
     
     // find?q=London (for searching by city name)
     // &units=metric to get celcius
@@ -76,11 +74,13 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     // Use doneFetching after icon has been retrieved
     
     func doneFetching(data: Data?, response: URLResponse?, error: Error?) {
-        let resstr = String(data: data!, encoding: String.Encoding.utf8)
-        
         // Execute stuff in UI thread
+        
         DispatchQueue.main.async(execute: {() in
-            NSLog(resstr!)
+            self.forecast = try? JSONDecoder().decode(ForecastResponse.self, from: data!)
+            
+            // Add image fetching
+            
             self.activityIndicatorView.stopAnimating()
             self.tableView.separatorStyle = .singleLine
             self.tableView.reloadData()
@@ -90,7 +90,6 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     
 
-    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -103,18 +102,20 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         
     }
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.data.count;
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell: UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: "identifier")
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell: UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: "firstIdentifier")
         
         if(cell == nil) {
-            cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "identifier")
+            cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "firstIdentifier")
         }
-        
-        cell!.textLabel!.text = self.data[indexPath.row]
+        if let fc = self.forecast {
+            cell!.textLabel!.text = fc.cod
+            NSLog(String(fc.list[0].coord.lat))
+        }
         return cell!
     }
     
