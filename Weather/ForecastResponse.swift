@@ -6,7 +6,7 @@
 //  Copyright © 2018 Timo McFarlane. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class ForecastResponse: NSObject, Codable {
     
@@ -28,18 +28,14 @@ class ForecastResponse: NSObject, Codable {
 struct Forecast: Codable {
     var name: String = ""
     var main: Main
-    var coord: Coordinates
-    var weather: Weather
-}
-
-struct Coordinates: Codable {
-    var lat: Double = 0.0
-    var lon: Double = 0.0
+    var dt: Int = 0
+    var weather: [Weather]
+    var imageData: URL?
 }
 
 struct Weather: Codable {
     var main: String = ""
-    var icon: String = "https://openweathermap.org/img/w/"
+    var icon: String = ""
 }
 
 struct Main: Codable {

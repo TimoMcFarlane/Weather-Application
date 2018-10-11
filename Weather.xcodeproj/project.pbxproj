@@ -19,6 +19,7 @@
 		182AFB28216B8C02009582E4 /* ForecastResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182AFB27216B8C02009582E4 /* ForecastResponse.swift */; };
 		182AFB2A216C73B0009582E4 /* WeatherAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182AFB29216C73B0009582E4 /* WeatherAPI.swift */; };
 		182AFB2C216C7457009582E4 /* WeatherAPIDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182AFB2B216C7457009582E4 /* WeatherAPIDelegate.swift */; };
+		18A64A28216C91BD00155EFA /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A64A27216C91BD00155EFA /* CustomTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		182AFB27216B8C02009582E4 /* ForecastResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastResponse.swift; sourceTree = "<group>"; };
 		182AFB29216C73B0009582E4 /* WeatherAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAPI.swift; sourceTree = "<group>"; };
 		182AFB2B216C7457009582E4 /* WeatherAPIDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAPIDelegate.swift; sourceTree = "<group>"; };
+		18A64A27216C91BD00155EFA /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 				182AFB27216B8C02009582E4 /* ForecastResponse.swift */,
 				182AFB29216C73B0009582E4 /* WeatherAPI.swift */,
 				182AFB2B216C7457009582E4 /* WeatherAPIDelegate.swift */,
+				18A64A27216C91BD00155EFA /* CustomTableViewCell.swift */,
 			);
 			path = Weather;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 			files = (
 				182A6E7221669BE3006BFCBF /* SecondViewController.swift in Sources */,
 				182A6E6E21669BE3006BFCBF /* AppDelegate.swift in Sources */,
+				18A64A28216C91BD00155EFA /* CustomTableViewCell.swift in Sources */,
 				182A6E9E21669CEC006BFCBF /* ThirdViewController.swift in Sources */,
 				182AFB2A216C73B0009582E4 /* WeatherAPI.swift in Sources */,
 				182AFB2C216C7457009582E4 /* WeatherAPIDelegate.swift in Sources */,
