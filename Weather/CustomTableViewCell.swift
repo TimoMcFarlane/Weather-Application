@@ -10,8 +10,8 @@ import UIKit
 
 class CustomTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var weatherLogo: UIImageView!
     
+    @IBOutlet weak var weatherIcon: UIImageView!
     @IBOutlet weak var weatherType: UILabel!
     
     @IBOutlet weak var weatherTemp: UILabel!

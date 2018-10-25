@@ -21,7 +21,7 @@ class SecondViewController: UITableViewController, WeatherAPIDelegate {
         activityIndicatorView.startAnimating()
         
         DispatchQueue.main.async {
-            WeatherAPI.sharedInstance.fetchForecast(WeatherAPI.getCurrentForecastURL())
+            WeatherAPI.sharedInstance.fetchForecast(WeatherAPI.getFiveDayForecastURL())
         }
     }
     
@@ -32,8 +32,6 @@ class SecondViewController: UITableViewController, WeatherAPIDelegate {
                 self.forecast = fetchedForecast
             }
             
-            // Implement image fetching from this shithole
-            
             self.activityIndicatorView.stopAnimating()
             self.tableView.separatorStyle = .singleLine
             self.tableView.reloadData()
@@ -42,7 +40,7 @@ class SecondViewController: UITableViewController, WeatherAPIDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
         self.tableView.dataSource = self
         self.tableView.delegate = self
         WeatherAPI.sharedInstance.delegate = self
@@ -59,17 +57,30 @@ class SecondViewController: UITableViewController, WeatherAPIDelegate {
         return 0
     }
     
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return WeatherAPI.getActiveOption()
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell: UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: "secondIdentifier")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "secondIdentifier") as! CustomTableViewCell
         
-        if(cell == nil) {
-            cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "secondIdentifier")
+        cell.weatherTemp.text! = String(format: "%.1f", Double(round(1000*(self.forecast?.list[indexPath.row].main.temp)!))/1000) + "°C"
+        cell.weatherTemp.textAlignment = .right
+        
+        if(self.forecast != nil) {
+            cell.weatherDate.text! = (self.forecast?.list[indexPath.row].dt_txt!)!
+            cell.weatherType.text! = ((self.forecast?.list[indexPath.row].weather[0].main)!)
         }
-        if let fc = self.forecast {
-            cell!.textLabel!.text = fc.cod
-            //NSLog(String(fc.list[0].coord.lat))
+        
+
+        if let url = WeatherAPI.sharedInstance.forecastResponse?.list[indexPath.row].imageData {
+            if let data = NSData(contentsOf: url) {
+                cell.weatherIcon.image = UIImage(data: data as Data)
+            }
         }
-        return cell!
+
+        
+        return cell
     }
 
 

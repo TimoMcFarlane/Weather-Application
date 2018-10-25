@@ -39,14 +39,12 @@ class FirstViewController: UIViewController, WeatherAPIDelegate {
             
             if let url = WeatherAPI.sharedInstance.forecastResponse?.list[0].imageData {
                 if let data = NSData(contentsOf: url) {
-                    self.weatherIcon.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleBottomMargin.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue | UIView.AutoresizingMask.flexibleRightMargin.rawValue | UIView.AutoresizingMask.flexibleLeftMargin.rawValue | UIView.AutoresizingMask.flexibleTopMargin.rawValue | UIView.AutoresizingMask.flexibleWidth.rawValue)
                     self.weatherIcon.contentMode = UIView.ContentMode.scaleAspectFit
                     self.weatherIcon.image = UIImage(data: data as Data)
                 }
             }
-            
             self.locationLabel.text! = (self.forecast?.list[0].name)!
-            self.weatherTemp.text! = String(format: "%f", (self.forecast?.list[0].main.temp)!)
+            self.weatherTemp.text! = String(format: "%.1f", Double(round(1000*(self.forecast?.list[0].main.temp)!))/1000) + "°C"
             self.activityIndicatorView.stopAnimating()
         })
     }
